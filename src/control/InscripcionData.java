@@ -26,8 +26,8 @@ public class InscripcionData {
         
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, alumno.getId_alumno());
-            ps.setInt(2, materia.getId_materia());
+            ps.setInt(1, alumno.getIdAlumno());
+            ps.setInt(2, materia.getIdMateria());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -52,7 +52,7 @@ public class InscripcionData {
             
             ps.setDouble(1, nota);
             
-            ps.setInt(2, alumno.getId_alumno());
+            ps.setInt(2, alumno.getIdAlumno());
             
             ps.executeUpdate();
             ps.close();
