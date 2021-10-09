@@ -102,7 +102,7 @@ ps.setBoolean(3, materia.isActivo());
    public Materia buscarMateria(int id){
     Materia materia=null;
     
-    String sql="SELECT * FROM alumno WHERE id_materia=?";
+    String sql="SELECT * FROM materia WHERE id_materia=?";
     
         try {
             PreparedStatement ps= con.prepareStatement(sql);
