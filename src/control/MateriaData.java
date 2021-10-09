@@ -52,7 +52,7 @@ ps.setBoolean(3, materia.isActivo());
     
     }
     public void actualizarMateria(Materia materia){
-        String sql = "UPDATE alumno SET legajo=?, nombre=?, apellido=? ,fecha_nac=?, activo=? WHERE id_alumno=?";
+        String sql = "UPDATE materia SET anio=?, nombre=?, activo=? WHERE id_materia=?";
         
         
         try {
@@ -120,7 +120,7 @@ ps.setBoolean(3, materia.isActivo());
             }
             
             
-            
+            ps.close();
             
         } catch (SQLException ex) {
             System.out.println("Error al buscar "+ex);
