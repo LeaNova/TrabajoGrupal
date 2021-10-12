@@ -41,7 +41,7 @@ public class AlumnoData {
             ps.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al agregar al alumno" + ex);
+            System.out.println("Error al agregar al alumno " + ex);
         }
     }
     
@@ -61,7 +61,7 @@ public class AlumnoData {
             ps.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al actualizar al alumno" + ex);
+            System.out.println("Error al actualizar al alumno " + ex);
         }
     }
     
@@ -78,18 +78,18 @@ public class AlumnoData {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                a.setIdAlumno(rs.getInt("id_alumno"));
-                a.setLegajo(rs.getInt("legajo"));
-                a.setNombre(rs.getString("nombre"));
-                a.setApellido(rs.getString("apellido"));
-                a.setFecNac(rs.getDate("fecha_nac").toLocalDate());
-                a.setActivo(rs.getBoolean("activo"));
+                a.setIdAlumno(rs.getInt(1));
+                a.setLegajo(rs.getInt(2));
+                a.setNombre(rs.getString(3));
+                a.setApellido(rs.getString(4));
+                a.setFecNac(rs.getDate(5).toLocalDate());
+                a.setActivo(rs.getBoolean(6));
             }
             
         ps.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al buscar al alumno" + ex);
+            System.out.println("Error al buscar al alumno " + ex);
         }
         
         return a;
@@ -120,9 +120,24 @@ public class AlumnoData {
         ps.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al obtener a los alumnos" + ex);
+            System.out.println("Error al obtener a los alumnos " + ex);
         }
         
         return alumnos;
+    }
+    
+    public void borrarAlumno(int idAlumno){
+        String sql = "UPDATE alumno SET activo = false WHERE id_alumno = ?";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            
+            ps.setInt(1, idAlumno);
+            
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al borrar al alumno " + ex);
+        }
     }
 }
