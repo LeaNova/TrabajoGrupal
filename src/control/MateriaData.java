@@ -128,4 +128,19 @@ ps.setBoolean(3, materia.isActivo());
        return materia;    
        
     }
+   
+   public void borrarMateria(int idMateria){
+        String sql = "UPDATE materia SET activo = false WHERE id_materia = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, idMateria);
+            
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al borrar la materia. " + ex);
+        }
+    }
 }
