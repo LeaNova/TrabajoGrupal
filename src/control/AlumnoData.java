@@ -66,7 +66,7 @@ public class AlumnoData {
     }
     
     public Alumno buscarAlumno(int idAlumno){
-        Alumno a = null;
+        Alumno a = new Alumno();
         
         String sql = "SELECT * FROM alumno WHERE id_alumno = ?";
         
@@ -78,12 +78,12 @@ public class AlumnoData {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                a.setIdAlumno(rs.getInt(1));
-                a.setLegajo(rs.getInt(2));
-                a.setNombre(rs.getString(3));
-                a.setApellido(rs.getString(4));
-                a.setFecNac(rs.getDate(5).toLocalDate());
-                a.setActivo(rs.getBoolean(6));
+                a.setIdAlumno(rs.getInt("id_alumno"));
+                a.setLegajo(rs.getInt("legajo"));
+                a.setNombre(rs.getString("nombre"));
+                a.setApellido(rs.getString("apellido"));
+                a.setFecNac(rs.getDate("fecha_nac").toLocalDate());
+                a.setActivo(rs.getBoolean("activo"));
             }
             
         ps.close();
@@ -97,7 +97,6 @@ public class AlumnoData {
     
     public List<Alumno> obtenerAlumnos(){
         List<Alumno> alumnos = new ArrayList<>();
-        Alumno a = null;
         
         String sql = "SELECT * FROM alumno";
         
@@ -107,6 +106,7 @@ public class AlumnoData {
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
+                Alumno a = new Alumno();
                 a.setIdAlumno(rs.getInt(1));
                 a.setLegajo(rs.getInt(2));
                 a.setNombre(rs.getString(3));
