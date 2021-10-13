@@ -46,7 +46,7 @@ public class AlumnoData {
     }
     
     public void actualizarAlumno(Alumno alumno){
-        String sql = "UPDATE alumno SET legajo = ?, nombre = ?, apellido = ?, fecha_nac = ?, activo = ? WHERE id_alumno = ?";
+        String sql = "UPDATE alumno SET legajo = ?, nombre = ?, apellido = ?, fecha_nac = ? WHERE id_alumno = ?";
         try {
             PreparedStatement ps = conexion.prepareStatement(sql);
             
@@ -54,8 +54,7 @@ public class AlumnoData {
             ps.setString(2, alumno.getNombre());
             ps.setString(3, alumno.getApellido());
             ps.setDate(4, Date.valueOf(alumno.getFecNac()));
-            ps.setBoolean(5, alumno.isActivo());
-            ps.setInt(6, alumno.getIdAlumno());
+            ps.setInt(5, alumno.getIdAlumno());
             
             ps.executeUpdate();
             ps.close();
@@ -117,7 +116,7 @@ public class AlumnoData {
                 alumnos.add(a);
             }
             
-        ps.close();
+            ps.close();
             
         } catch (SQLException ex) {
             System.out.println("Error al obtener a los alumnos " + ex);
@@ -126,7 +125,69 @@ public class AlumnoData {
         return alumnos;
     }
     
-    public void borrarAlumno(int idAlumno){
+    public List<Alumno> obtenerAlumnosActivos(){
+        List<Alumno> alumnosActivos = new ArrayList<>();
+        
+        String sql = "SELECT * FROM alumno WHERE activo = true";
+        
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Alumno a = new Alumno();
+                a.setIdAlumno(rs.getInt(1));
+                a.setLegajo(rs.getInt(2));
+                a.setNombre(rs.getString(3));
+                a.setApellido(rs.getString(4));
+                a.setFecNac(rs.getDate(5).toLocalDate());
+                a.setActivo(rs.getBoolean(6));
+                
+                alumnosActivos.add(a);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener a los alumnos " + ex);
+        }
+        
+        return alumnosActivos;
+    }
+    
+    public List<Alumno> obtenerAlumnosInactivos(){
+        List<Alumno> alumnosInactivos = new ArrayList<>();
+        
+        String sql = "SELECT * FROM alumno WHERE activo = false";
+        
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Alumno a = new Alumno();
+                a.setIdAlumno(rs.getInt(1));
+                a.setLegajo(rs.getInt(2));
+                a.setNombre(rs.getString(3));
+                a.setApellido(rs.getString(4));
+                a.setFecNac(rs.getDate(5).toLocalDate());
+                a.setActivo(rs.getBoolean(6));
+                
+                alumnosInactivos.add(a);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener a los alumnos " + ex);
+        }
+        
+        return alumnosInactivos;
+    }
+    
+    public void desactivarAlumno(int idAlumno){
         String sql = "UPDATE alumno SET activo = false WHERE id_alumno = ?";
         try {
             PreparedStatement ps = conexion.prepareStatement(sql);
@@ -137,7 +198,37 @@ public class AlumnoData {
             ps.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al borrar al alumno " + ex);
+            System.out.println("Error al desactivar al alumno " + ex);
+        }
+    }
+    
+    public void activarAlumno(int idAlumno){
+        String sql = "UPDATE alumno SET activo = true WHERE id_alumno = ?";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            
+            ps.setInt(1, idAlumno);
+            
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al activar al alumno " + ex);
+        }
+    }
+    
+    public void borrarAlumno(int idAlumno) {
+        String sql = "DELETE FROM alumno WHERE id_alumno = ?";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            
+            ps.setInt(1, idAlumno);
+            
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al borrar alumno" + ex);
         }
     }
 }

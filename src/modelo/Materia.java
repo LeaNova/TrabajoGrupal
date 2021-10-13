@@ -4,7 +4,7 @@ package modelo;
  * @author Gomez Jon Darian, Guardia Lucero Santiago Agustín, Heredia Leandro
  */
 public class Materia {
-     private int idMateria;
+    private int idMateria;
     private String nombre;
     private int anio;
     private boolean activo;
@@ -21,8 +21,6 @@ public class Materia {
         this.nombre = nombre;
         this.activo = activo;
     }
-
-    
 
     public Materia() {
     }
@@ -58,5 +56,9 @@ public class Materia {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + ", activo=" + activo + '}';
+    }
 }
