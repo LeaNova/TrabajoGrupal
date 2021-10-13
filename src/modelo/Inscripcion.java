@@ -5,27 +5,27 @@ package modelo;
  */
 public class Inscripcion {
     private int id_inscripcion;
-    private int id_alumno;
-    private int id_materia;
+    private Alumno alumno;
+    private Materia materia;
     private double nota;
 
     // Constructores
-    public Inscripcion(int id_alumno, int id_materia, double nota) {
-        this.id_alumno = id_alumno;
-        this.id_materia = id_materia;
+    public Inscripcion(Alumno alumno, Materia materia, double nota) {
+        this.alumno = alumno;
+        this.materia = materia;
         this.nota = nota;
     }
-
+    
     public Inscripcion() {
     }
-
-    public Inscripcion(int id_inscripcion, int id_alumno, int id_materia, double nota) {
+    
+    public Inscripcion(int id_inscripcion, Alumno alumno, Materia materia, double nota) {
         this.id_inscripcion = id_inscripcion;
-        this.id_alumno = id_alumno;
-        this.id_materia = id_materia;
+        this.alumno = alumno;
+        this.materia = materia;
         this.nota = nota;
     }
-
+    
     // Getters & Setters
     public int getId_inscripcion() {
         return id_inscripcion;
@@ -35,20 +35,20 @@ public class Inscripcion {
         this.id_inscripcion = id_inscripcion;
     }
 
-    public int getId_alumno() {
-        return id_alumno;
+    public Alumno getAlumno() {
+        return alumno;
     }
 
-    public void setId_alumno(int id_alumno) {
-        this.id_alumno = id_alumno;
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
-    public int getId_materia() {
-        return id_materia;
+    public Materia getMateria() {
+        return materia;
     }
 
-    public void setId_materia(int id_materia) {
-        this.id_materia = id_materia;
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
 
     public double getNota() {
