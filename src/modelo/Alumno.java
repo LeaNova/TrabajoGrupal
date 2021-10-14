@@ -15,7 +15,6 @@ public class Alumno {
     private boolean activo;
 
     public Alumno(){
-        
     }
     
     public Alumno(int legajo, String nombre, String apellido, LocalDate fecNac, boolean activo) {
@@ -85,6 +84,6 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{ " + "id = " + idAlumno + ", legajo = " + legajo + ", nombre = " + nombre + ", apellido = " + apellido + ", fecha_nac = " + fecNac + ", activo = " + activo + '}';
+        return "Alumno{ " + "id = " + idAlumno + ", legajo = " + legajo + ", nombre = " + nombre + ", apellido = " + apellido + ", fecha_nac = " + fecNac + ", activo = " + activo + " }";
     }
 }
