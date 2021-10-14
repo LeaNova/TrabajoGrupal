@@ -61,6 +61,6 @@ public class Inscripcion {
 
     @Override
     public String toString() {
-        return "Inscripcion{" + "id_inscripcion=" + id_inscripcion + ", alumno=" + alumno + ", materia=" + materia + ", nota=" + nota + '}';
+        return "Inscripcion{ " + "id = " + id_inscripcion + ", " + alumno + ", " + materia + ", nota = " + nota + " }";
     }
 }

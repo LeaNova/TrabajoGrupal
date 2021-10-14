@@ -144,6 +144,39 @@ public class InscripcionData {
         return listaAlumnos;
     }
     
+    public List<Inscripcion> obtenerInscripciones(){
+        List<Inscripcion> inscripciones = new ArrayList<>();
+        String sql = "SELECT * FROM inscripcion";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Inscripcion i = new Inscripcion();
+                Alumno a = new Alumno();
+                Materia m = new Materia();
+                
+                i.setId_inscripcion(rs.getInt(1));
+                a = buscarAlumno(rs.getInt(2));
+                m = buscarMateria(rs.getInt(3));
+                i.setNota(rs.getDouble(4));
+                
+                i.setAlumno(a);
+                i.setMateria(m); 
+                inscripciones.add(i);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener las inscripciones. " + ex);
+        }
+        
+        return inscripciones;
+    }
+    
     public Alumno buscarAlumno(int id) {
         AlumnoData ad = new AlumnoData(conexion);
         
