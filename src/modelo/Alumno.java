@@ -14,6 +14,7 @@ public class Alumno {
     private LocalDate fecNac;
     private boolean activo;
 
+    // Constructores
     public Alumno(){
     }
     
@@ -34,6 +35,7 @@ public class Alumno {
         this.activo = activo;
     }
 
+    // Getters & Setters
     public int getIdAlumno() {
         return idAlumno;
     }
@@ -84,6 +86,6 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{ " + "id = " + idAlumno + ", legajo = " + legajo + ", nombre = " + nombre + ", apellido = " + apellido + ", fecha_nac = " + fecNac + ", activo = " + activo + " }";
+        return "Alumno= id: " + idAlumno + ", legajo: " + legajo + ". Nombre y Apellido: " + nombre + apellido + ", fecha de nacimiento: " + fecNac + ". Activo: " + activo + ".";
     }
 }

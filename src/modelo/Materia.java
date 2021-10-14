@@ -9,6 +9,7 @@ public class Materia {
     private int anio;
     private boolean activo;
 
+    // Constructores
     public Materia(int idMateria, String nombre, int anio, boolean activo) {
         this.idMateria = idMateria;
         this.nombre = nombre;
@@ -25,6 +26,7 @@ public class Materia {
     public Materia() {
     }
 
+    // Getters & Setters
     public int getIdMateria() {
         return idMateria;
     }
@@ -59,6 +61,6 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{ " + "id = " + idMateria + ", nombre = " + nombre + ", año = " + anio + ", activo = " + activo + " }";
+        return "Materia= id: " + idMateria + ". Nombre: " + nombre + ". Año: " + anio + ". Activo: " + activo + ".";
     }
 }
