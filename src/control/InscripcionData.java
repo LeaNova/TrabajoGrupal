@@ -83,6 +83,8 @@ public class InscripcionData {
             while (rs.next()) {
                 inscripcion = new Inscripcion();
                 
+                inscripcion.setId_inscripcion(rs.getInt(1));
+                
                 alumno = buscarAlumno(rs.getInt("id_alumno"));
                 inscripcion.setAlumno(alumno);
                 
