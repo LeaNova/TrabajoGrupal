@@ -21,7 +21,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -30,22 +30,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jmAgregarInscripcion = new javax.swing.JMenuItem();
+        jmListaInscripciones = new javax.swing.JMenuItem();
+        jmInscripcionesAlumno = new javax.swing.JMenuItem();
+        jmInscriptosMaterias = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 831, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 705, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Alumnos");
@@ -70,17 +73,56 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Inscripciones");
 
-        jMenuItem5.setText("Agregar Inscripcion");
-        jMenu3.add(jMenuItem5);
+        jmAgregarInscripcion.setText("Agregar Inscripcion");
+        jmAgregarInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAgregarInscripcionActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmAgregarInscripcion);
 
-        jMenuItem6.setText("Modificar Inscripcion");
-        jMenu3.add(jMenuItem6);
+        jmListaInscripciones.setText("Lista de Inscripciones");
+        jmListaInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListaInscripcionesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmListaInscripciones);
+
+        jmInscripcionesAlumno.setText("Inscripciones del Alumno");
+        jmInscripcionesAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmInscripcionesAlumnoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmInscripcionesAlumno);
+
+        jmInscriptosMaterias.setText("Inscriptos en Materias");
+        jmInscriptosMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmInscriptosMateriasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmInscriptosMaterias);
+
+        jMenuItem5.setText("Agregar Nota");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem5);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Salir");
 
         jMenuItem7.setText("Salir");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem7);
 
         jMenuBar1.add(jMenu4);
@@ -91,15 +133,65 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmAgregarInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAgregarInscripcionActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaAgregarInscripcion vai = new VistaAgregarInscripcion();
+        vai.setVisible(true);
+        escritorio.add(vai);
+    }//GEN-LAST:event_jmAgregarInscripcionActionPerformed
+
+    private void jmInscripcionesAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInscripcionesAlumnoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMostrarMateriasDeAlumno vmma = new VistaMostrarMateriasDeAlumno();
+        vmma.setVisible(true);
+        escritorio.add(vmma);
+    }//GEN-LAST:event_jmInscripcionesAlumnoActionPerformed
+
+    private void jmInscriptosMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInscriptosMateriasActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMostrarAlumnosPorMateria vmam = new VistaMostrarAlumnosPorMateria();
+        vmam.setVisible(true);
+        escritorio.add(vmam);
+    }//GEN-LAST:event_jmInscriptosMateriasActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaAgregarNota van = new VistaAgregarNota();
+        van.setVisible(true);
+        escritorio.add(van);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jmListaInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListaInscripcionesActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaListaInscripciones vli = new VistaListaInscripciones();
+        vli.setVisible(true);
+        escritorio.add(vli);
+    }//GEN-LAST:event_jmListaInscripcionesActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,7 +229,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -148,7 +240,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jmAgregarInscripcion;
+    private javax.swing.JMenuItem jmInscripcionesAlumno;
+    private javax.swing.JMenuItem jmInscriptosMaterias;
+    private javax.swing.JMenuItem jmListaInscripciones;
     // End of variables declaration//GEN-END:variables
 }

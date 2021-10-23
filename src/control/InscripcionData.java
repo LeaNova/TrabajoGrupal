@@ -47,6 +47,87 @@ public class InscripcionData {
         }
     }
     
+    public Inscripcion buscarInscripcion(int id) {
+        Inscripcion ins = new Inscripcion();
+        Alumno alumno;
+        Materia materia;
+        
+        String sql = "SELECT * FROM inscripcion WHERE id_inscripcion = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                ins.setId_inscripcion(rs.getInt(1));
+                alumno = buscarAlumno(rs.getInt(2));
+                materia = buscarMateria(rs.getInt(3));
+                ins.setNota(rs.getDouble(4));
+                
+                ins.setAlumno(alumno);
+                ins.setMateria(materia); 
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar la inscripcion. " + ex);
+        }
+        
+        return ins;
+    }
+    
+    public List<Inscripcion> obtenerInscripciones(){
+        List<Inscripcion> inscripciones = new ArrayList<>();
+        
+        Inscripcion inscripcion;
+        Alumno alumno;
+        Materia materia;
+        
+        String sql = "SELECT * FROM inscripcion";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                inscripcion = new Inscripcion();
+                
+                inscripcion.setId_inscripcion(rs.getInt(1));
+                alumno = buscarAlumno(rs.getInt(2));
+                materia = buscarMateria(rs.getInt(3));
+                inscripcion.setNota(rs.getDouble(4));
+                
+                inscripcion.setAlumno(alumno);
+                inscripcion.setMateria(materia); 
+                inscripciones.add(inscripcion);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener las inscripciones. " + ex);
+        }
+        
+        return inscripciones;
+    }
+    
+    public void borrarInscripcion(int id) {
+        String sql = "DELETE FROM inscripcion WHERE id_inscripcion = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al borrar la inscripcion. " + ex);
+        }
+    }
+    
     public void agregarNota(Inscripcion inscripcion, double nota) {
         String sql = "UPDATE inscripcion SET nota = ? WHERE id_alumno = ?";
         
@@ -143,57 +224,6 @@ public class InscripcionData {
         }
         
         return listaAlumnos;
-    }
-    
-    public List<Inscripcion> obtenerInscripciones(){
-        List<Inscripcion> inscripciones = new ArrayList<>();
-        
-        Inscripcion inscripcion;
-        Alumno alumno;
-        Materia materia;
-        
-        String sql = "SELECT * FROM inscripcion";
-        
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-                inscripcion = new Inscripcion();
-                
-                inscripcion.setId_inscripcion(rs.getInt(1));
-                alumno = buscarAlumno(rs.getInt(2));
-                materia = buscarMateria(rs.getInt(3));
-                inscripcion.setNota(rs.getDouble(4));
-                
-                inscripcion.setAlumno(alumno);
-                inscripcion.setMateria(materia); 
-                inscripciones.add(inscripcion);
-            }
-            
-            ps.close();
-            
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener las inscripciones. " + ex);
-        }
-        
-        return inscripciones;
-    }
-    
-    public void borrarInscripcion(int id) {
-        String sql = "DELETE FROM inscripcion WHERE id_inscripcion = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setInt(1, id);
-            
-            ps.executeUpdate();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            System.out.println("Error al borrar la inscripcion. " + ex);
-        }
     }
     
     public Alumno buscarAlumno(int id) {
