@@ -27,8 +27,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jmAgregarMateria = new javax.swing.JMenuItem();
+        jmModificarMateria = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jmAgregarInscripcion = new javax.swing.JMenuItem();
         jmListaInscripciones = new javax.swing.JMenuItem();
@@ -63,11 +63,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Materias");
 
-        jMenuItem3.setText("Agregar Materia");
-        jMenu2.add(jMenuItem3);
+        jmAgregarMateria.setText("Agregar Materia");
+        jmAgregarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAgregarMateriaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmAgregarMateria);
 
-        jMenuItem4.setText("Modificar Materia");
-        jMenu2.add(jMenuItem4);
+        jmModificarMateria.setText("Modificar Materia");
+        jmModificarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmModificarMateriaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmModificarMateria);
 
         jMenuBar1.add(jMenu2);
 
@@ -193,6 +203,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jmAgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAgregarMateriaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaAgregarMateria vim = new VistaAgregarMateria();
+        vim.setVisible(true);
+        escritorio.add(vim);
+        
+        
+    }//GEN-LAST:event_jmAgregarMateriaActionPerformed
+
+    private void jmModificarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModificarMateriaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaModificarMateria vimm = new VistaModificarMateria();
+        vimm.setVisible(true);
+        escritorio.add(vimm);
+    }//GEN-LAST:event_jmModificarMateriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -237,13 +267,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jmAgregarInscripcion;
+    private javax.swing.JMenuItem jmAgregarMateria;
     private javax.swing.JMenuItem jmInscripcionesAlumno;
     private javax.swing.JMenuItem jmInscriptosMaterias;
     private javax.swing.JMenuItem jmListaInscripciones;
+    private javax.swing.JMenuItem jmModificarMateria;
     // End of variables declaration//GEN-END:variables
 }
