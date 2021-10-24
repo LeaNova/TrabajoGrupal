@@ -152,7 +152,8 @@ private Conexion conexion;
         
          Materia materia = new Materia(nombre,anio,activo);
         materiaData.agregarMateria(materia);
-        //jtId.setText(materia.getIdMateria()+"");
+        
+        limpiarCampos();  
         
          } catch (Throwable ex) {
             JOptionPane.showMessageDialog(this, "Error en los datos");
@@ -170,7 +171,11 @@ private Conexion conexion;
         
         
     }//GEN-LAST:event_jbLimpiarActionPerformed
-
+  private void limpiarCampos(){
+        jtNombre.setText("");
+        jtAño.setText("");
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chActivo;
