@@ -1,15 +1,35 @@
 package vistas;
 
+import control.*;
+import modelo.*;
+import java.time.LocalDate;
+import java.time.format.*;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  * @author Gomez Jon Darian, Guardia Lucero Santiago Agustín, Heredia Leandro
  */
 public class VistaModificarAlumno extends javax.swing.JInternalFrame {
 
+    private Conexion c;
+    private AlumnoData ad;
+    
     /**
      * Creates new form VistaModificarAlumno
      */
     public VistaModificarAlumno() {
-        initComponents();
+        try {
+            initComponents();
+            
+            c = new Conexion();
+            ad = new AlumnoData(c);
+            
+            cargarComboId();
+            
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Error en la conexion " + ex);
+        }
     }
 
     /**
@@ -21,21 +41,270 @@ public class VistaModificarAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtLegajo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtFechaNac = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        checkActivo = new javax.swing.JCheckBox();
+        btnBuscar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnActualizar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        comboId = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+
+        setClosable(true);
+
+        jLabel7.setText("ID:");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Actualizar alumno");
+
+        jLabel2.setText("Legajo:");
+
+        txtLegajo.setEnabled(false);
+
+        jLabel3.setText("Nombre:");
+
+        txtNombre.setEnabled(false);
+
+        jLabel4.setText("Apellido:");
+
+        txtApellido.setEnabled(false);
+
+        jLabel5.setText("F. nacimiento:");
+        jLabel5.setToolTipText("Fecha de nacimiento:");
+
+        txtFechaNac.setToolTipText("dd/mm/yyyy");
+        txtFechaNac.setEnabled(false);
+
+        jLabel6.setText("Activo:");
+
+        checkActivo.setEnabled(false);
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setEnabled(false);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnBorrar.setText("Borrar");
+        btnBorrar.setEnabled(false);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("dd/mm/yyyy");
+        jLabel8.setToolTipText("Fecha de nacimiento:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6))
+                            .addGap(178, 178, 178))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel8))
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkActivo))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(34, 34, 34)
+                            .addComponent(btnActualizar)
+                            .addGap(44, 44, 44)
+                            .addComponent(btnBorrar))))
+                .addContainerGap(101, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(btnBuscar)
+                    .addComponent(comboId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkActivo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActualizar)
+                    .addComponent(btnBorrar))
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        Alumno a = ad.buscarAlumno(Integer.parseInt(comboId.getSelectedItem()+""));
+        activarCampos();
+        txtLegajo.setText(a.getLegajo()+"");
+        txtNombre.setText(a.getNombre());
+        txtApellido.setText(a.getApellido());
+        txtFechaNac.setText(a.getFecNac().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        checkActivo.setSelected(a.isActivo());
+        btnActualizar.setEnabled(true);
+        btnBorrar.setEnabled(true);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(!txtFechaNac.getText().isEmpty()){
+                Alumno a = ad.buscarAlumno(Integer.parseInt(comboId.getSelectedItem()+""));
+                a.setLegajo(Integer.parseInt(txtLegajo.getText()));
+                a.setNombre(txtNombre.getText());
+                a.setApellido(txtApellido.getText());
+                a.setFecNac(LocalDate.parse(txtFechaNac.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        
+                ad.actualizarAlumno(a);
+                limpiarCampos();
+                desactivarCampos();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Ingrese fecha de nacimiento");
+                txtFechaNac.requestFocus();
+            }
+        }catch(Exception e){
+            if(e instanceof NumberFormatException){
+                JOptionPane.showMessageDialog(this, "Número de legajo no válido");
+                txtLegajo.setText("");
+                txtLegajo.requestFocus();
+            }
+            
+            if(e instanceof DateTimeParseException){
+                JOptionPane.showMessageDialog(this, "Formato de fecha incorrecto");
+                txtFechaNac.setText("");
+                txtFechaNac.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+        ad.desactivarAlumno(Integer.parseInt(comboId.getSelectedItem()+""));
+        limpiarCampos();
+        desactivarCampos();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void activarCampos(){
+        txtLegajo.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtApellido.setEnabled(true);
+        txtFechaNac.setEnabled(true);
+        btnActualizar.setEnabled(true);
+        btnBorrar.setEnabled(true);
+    }
+    
+    private void desactivarCampos(){
+        txtLegajo.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtApellido.setEnabled(false);
+        txtFechaNac.setEnabled(false);
+        btnActualizar.setEnabled(false);
+        btnBorrar.setEnabled(false);
+    }
+    
+    private void limpiarCampos(){
+        txtLegajo.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtFechaNac.setText("");
+    }
+    
+    private void cargarComboId(){
+        List<Alumno> alumnos;
+        alumnos = ad.obtenerAlumnos();
+        for (Alumno alumno : alumnos) {
+                comboId.addItem(alumno.getIdAlumno());
+            }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JCheckBox checkActivo;
+    private javax.swing.JComboBox<Integer> comboId;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtFechaNac;
+    private javax.swing.JTextField txtLegajo;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

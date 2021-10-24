@@ -54,9 +54,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1.setText("Alumnos");
 
         jMenuItem1.setText("Agregar Alumno");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Modificar Alumno");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -203,6 +213,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+<<<<<<< Updated upstream
     private void jmAgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAgregarMateriaActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -222,6 +233,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         vimm.setVisible(true);
         escritorio.add(vimm);
     }//GEN-LAST:event_jmModificarMateriaActionPerformed
+=======
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaAgregarAlumno vaa = new VistaAgregarAlumno();
+        vaa.setVisible(true);
+        escritorio.add(vaa);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaModificarAlumno vma = new VistaModificarAlumno();
+        vma.setVisible(true);
+        escritorio.add(vma);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
