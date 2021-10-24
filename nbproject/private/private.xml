@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jon/Documents/NetBeansProjects/TrabajoGrupal/src/modelo/Alumno.java</file>
-            <file>file:/C:/Users/jon/Documents/NetBeansProjects/TrabajoGrupal/src/vistas/VistaAgregarInscripcion.java</file>
+            <file>file:/C:/Users/jon/Documents/NetBeansProjects/TrabajoGrupal/src/vistas/VistaModificarAlumno.java</file>
             <file>file:/C:/Users/jon/Documents/NetBeansProjects/TrabajoGrupal/src/vistas/VistaAgregarAlumno.java</file>
+            <file>file:/C:/Users/jon/Documents/NetBeansProjects/TrabajoGrupal/src/vistas/VistaModificarMateria.java</file>
+            <file>file:/C:/Users/jon/Documents/NetBeansProjects/TrabajoGrupal/src/vistas/VistaAgregarMateria.java</file>
         </group>
     </open-files>
 </project-private>

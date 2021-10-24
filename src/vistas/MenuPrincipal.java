@@ -213,7 +213,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-<<<<<<< Updated upstream
     private void jmAgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAgregarMateriaActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -233,7 +232,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         vimm.setVisible(true);
         escritorio.add(vimm);
     }//GEN-LAST:event_jmModificarMateriaActionPerformed
-=======
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -251,7 +250,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         vma.setVisible(true);
         escritorio.add(vma);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
->>>>>>> Stashed changes
+
 
     /**
      * @param args the command line arguments
